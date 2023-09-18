@@ -38,8 +38,20 @@ Clone this repository to your local machine or server:
    Modify the script (`report.sh`) as needed to customize its behavior. You can specify the output file location if desired. By default, the report is saved to `aws_report.txt`.
 
 3. **Setup the Cronjob**
+    It will be executed daily and Generate the report 
 
+If you would like to contribute to this Script, you can follow these steps:
 
+🍴 Fork the repository and create a new branch for your feature or bug fix.
 
+✏️ Make your modifications and ensure they are working as expected.
 
+💾 Commit your changes and push them to your forked repository.
 
+🔀 Open a pull request, providing a clear description of your changes and the problem they solve.
+
+We welcome any contributions, including bug fixes, new features, and improvements.
+
+🎉 Let's collaborate and make this script even better! 🚀
+
+Please let me know if there's anything else I can assist you with!

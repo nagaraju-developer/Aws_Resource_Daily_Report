@@ -2,24 +2,39 @@
 
 ##########################
 #
-# Author :- Botla Nagaraju
+# Author: Botla Nagaraju
 #
-# script for aws daily
-#usgae 
+# Description: Script to gather information about AWS resources (S3, EC2, Lambda, IAM).
 #
 #########################
+
+
+# Set the output file
+output_file="aws_report.txt"
+
+# Redirect stdout and stderr to a log file
+exec >> "$output_file" 2>&1
+
+# Add a timestamp to the report file
+echo "Report generated on: $(date)" >> "$output_file"
+echo "===================================" >> "$output_file"
+#enabling the debug mode to show the commands
 set -x
-#list the s3 buckets
+# AWS CLI commands to gather information
 
-aws s3 ls
+# List S3 buckets
+aws s3 ls >> "$output_file" 
 
-#to describe the aws ec2 istances
-aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId' >  rs
-	
-#to list the aws lambda functions
+# Describe EC2 instances in JSON format
+aws ec2 describe-instances --output json >> "$output_file"  
 
-aws lambda list-functions
+# List Lambda functions in JSON format
+aws lambda list-functions --output json >> "$output_file"
 
-# to list the users
+# List IAM users in JSON format
+aws iam list-users --output json >> "$output_file"
 
-aws iam list-users >> rs
+# Disable debug mode
+set +x
+# Indicate the completion of the script
+echo "Script execution completed." >> "$output_file"
